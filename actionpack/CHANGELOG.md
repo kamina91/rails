@@ -1,3 +1,12 @@
+*   `ActionController::Parameters` now have freezed controller/action values.
+
+    Previously, `params[:action]` could be substituted in-place.
+    This will cause the next request to not work as expected because
+    `params[:action]` object is exactly same as `Journey::Route#defaults[:action]`.
+    After this, `params[:action].sub!(/foo/, "bar")` will raise an exception.
+
+    *Kaito Minatoya*
+
 *   Remove undocumented `params` option from `url_for` helper.
 
     *Ilkka Oksanen*

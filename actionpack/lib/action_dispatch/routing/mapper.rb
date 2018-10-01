@@ -334,7 +334,7 @@ module ActionDispatch
 
           def check_part(name, part, path_params, hash)
             if part
-              hash[name] = yield(part)
+              hash[name] = yield(part).freeze
             else
               unless path_params.include?(name)
                 message = "Missing :#{name} key on routes definition, please check your routes."
